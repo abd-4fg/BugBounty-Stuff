@@ -1,7 +1,5 @@
 # Bug-Bounty Checklist
 
-# Bug-Bounty Checklist
-
 (From Portswigger academy + random tips)
 
 <details>
