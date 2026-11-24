@@ -1,7 +1,5 @@
 # Random Tips (Bug bounty)
 
-# Random Tips (Bug bounty)
-
 <details>
 <summary>h1 disclosed reports</summary>
 
