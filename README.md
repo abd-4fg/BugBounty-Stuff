@@ -4,12 +4,12 @@ A personal collection of security and bug bounty resources, including bookmarked
 
 ## Collection
 
-- [Random Tips (Bug Bounty)](https://app.notion.com/p/abdh1/Random-Tips-Bug-bounty-68ff95362d1946ae80e296be9129d263?source=copy_link)
-- [Services Checklist](https://abdh1.notion.site/Services-Checklist-8e45c53c36a54cc1bb7200c4323efcdb)
-- [Bug Bounty Checklist](https://app.notion.com/p/abdh1/Bug-Bounty-Checklist-872e0a533b844bc490777a1c4525f4fe?source=copy_link)
-- [Burp Suite Stuff](https://app.notion.com/p/abdh1/Burp-Suite-Stuff-41cdc39c2322807c835bd79315b48d88?source=copy_link)
-- [Wordlists & Payloads](https://app.notion.com/p/abdh1/Wordlists-Payloads-c37d808588d44bf9aaca7c68b977d067?source=copy_link)
-- [Recon Methodology (Old)](https://app.notion.com/p/abdh1/Recon-Methadology-old-b24368ca346c45509e037e04eec29483?source=copy_link)
+- [Random Tips (Bug Bounty)](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Random-Tips/README.md)
+- [Services Checklist](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Services%20Checklist/README.md)
+- [Bug Bounty Checklist](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Bug-Bounty%20Checklist/README.md)
+- [Burp Suite Stuff](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Burp%20Suite%20Stuff/README.md)
+- [Wordlists & Payloads](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Wordlists%20%26%20Payloads/README.md)
+- [Recon Methodology (Old)](https://github.com/abd-4fg/BugBounty-Stuff/blob/main/src/Recon%20Methadology%20(old)/README.md)
 
 
 ### Notes
