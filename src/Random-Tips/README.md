@@ -5968,32 +5968,6 @@ https://twitter.com/tabaahi_/status/1552961624188735488?s=20&t=aVdmeG-2AI_vi_Gow
 </details>
 
 <details>
-<summary>Youtube Views Increase</summary>
-
-<dl>
-<dd>
-
-https://github.com/HackerUniverse/YT_Views_Increaser_Bot
-
-</dd>
-</dl>
-
-</details>
-
-<details>
-<summary>Twitter content Analysis</summary>
-
-<dl>
-<dd>
-
-https://en.whotwi.com/
-
-</dd>
-</dl>
-
-</details>
-
-<details>
 <summary>Information Disclosure scan via patterns/regex</summary>
 
 <dl>
