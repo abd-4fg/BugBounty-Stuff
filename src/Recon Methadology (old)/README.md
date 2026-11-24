@@ -1,7 +1,5 @@
 # Recon Methadology (old)
 
-# Recon Methadology (old)
-
 “Methodology I used once in past - Outdated info is expected”
 
 ## Subdomain Enumeration :
