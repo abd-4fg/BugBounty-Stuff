@@ -1,5 +1,3 @@
-# Burp Suite Stuff
-
 # **Burp Suite Stuff**
 
 <details>
