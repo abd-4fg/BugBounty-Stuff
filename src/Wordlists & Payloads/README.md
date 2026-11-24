@@ -1,7 +1,5 @@
 # Wordlists & Payloads:
 
-# **Wordlists & Payloads:**
-
 <details>
 <summary>XSS payloads :</summary>
 
