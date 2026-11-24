@@ -1,7 +1,5 @@
 # Services Checklist
 
-# Services Checklist
-
 <details>
 <summary>Unauthenticated Instances issues</summary>
 
