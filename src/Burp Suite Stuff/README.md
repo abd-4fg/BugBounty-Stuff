@@ -295,16 +295,3 @@ No more noise in your logs!
 </dl>
 
 </details>
-
-<details>
-<summary>Can find Burp crack setup here</summary>
-
-<dl>
-<dd>
-
-https://www.dr-farfar.com/
-
-</dd>
-</dl>
-
-</details>
